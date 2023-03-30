@@ -42,4 +42,38 @@ public class BoardHelper extends HelperBase{
         return wd.findElements(By.cssSelector(".list-name-input")).size()>0;
 
     }
+
+    public void returnToHomePage() {
+        click(By.cssSelector(".qsCZSrobO7JoSv"));
+    }
+
+    public int getBoardCount() {
+        return wd.findElements(By.cssSelector(".board-tile-details")).size()-1-recentlyViewed();
+    }
+
+    private int recentlyViewed() {
+        return wd.findElements(By.xpath("//*[contains(@class, 'icon-clock')]/../..//div")).size();
+    }
+
+    public void clickTheFirstBoard() {
+        click(By.cssSelector(".board-tile-details"));
+    }
+
+    public void openSideBoard() {
+        click(By.cssSelector(".show-sidebar-button-react-root"));
+    }
+
+    public void openMore() {
+        click(By.className("js-open-more"));
+    }
+
+    public void closeBoard() {
+        click(By.className("js-close-board"));
+        click(By.className("js-confirm"));
+    }
+
+    public void deleteBoard() {
+        click(By.xpath("//button[@data-testid='close-board-delete-board-button']"));
+        click(By.xpath("//button[@data-testid='close-board-delete-board-confirm-button']"));
+    }
 }
