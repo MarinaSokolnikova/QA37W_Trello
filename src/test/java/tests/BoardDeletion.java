@@ -13,4 +13,16 @@ public class BoardDeletion extends TestBase{
         app.getBoard().closeBoard();
         app.getBoard().deleteBoard();
     }
+
+    @Test
+    public void refuseBoardDeletion(){
+        app.getBoard().clickTheFirstBoard();
+        app.getBoard().pause(1000);
+        //app.getBoard().openSideBoard();
+        app.getBoard().openMore();
+        app.getBoard().closeBoard();
+        app.getBoard().openBoard();
+        app.getBoard().pause(1000);
+        app.getBoard().returnToHomePage();
+    }
 }

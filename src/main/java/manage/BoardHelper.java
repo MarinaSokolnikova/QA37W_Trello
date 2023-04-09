@@ -1,5 +1,6 @@
 package manage;
 
+import model.Board;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +22,11 @@ public class BoardHelper extends HelperBase{
 
     public void fillInBoardCreationForm(String title) {
         type(By.xpath("//input[@data-testid='create-board-title-input']"), title);
+
+    }
+
+    public void fillInBoardCreationForm(Board board) {
+        type(By.xpath("//input[@data-testid='create-board-title-input']"), board.getTitle());
 
     }
 
@@ -75,5 +81,23 @@ public class BoardHelper extends HelperBase{
     public void deleteBoard() {
         click(By.xpath("//button[@data-testid='close-board-delete-board-button']"));
         click(By.xpath("//button[@data-testid='close-board-delete-board-confirm-button']"));
+    }
+
+    public void startBoardCreation() {
+        click(By.xpath("//li[@data-testid='create-board-tile']"));
+    }
+
+    public void openBoard() {
+        click(By.cssSelector("[data-testid='workspace-chooser-trigger-button']"));
+        pause(1000);//!!!
+        click(By.xpath("//div[@class='atlaskit-portal']//div/button"));
+    }
+
+    public void closeCreationWindow() {
+        click(By.cssSelector("[data-testid='popover-close']"));
+    }
+
+    public void returnToCreation() {
+        click(By.cssSelector(".Uz5Itgv85sjPQ_"));
     }
 }
